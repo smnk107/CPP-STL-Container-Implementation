@@ -95,6 +95,8 @@ void Unordered_map<T1,T2>::insert(pair<T1,T2> temp)
 {
 	T1 tkey = temp.first;
 	T2 tval = temp.second;
+	
+	int flag = 1;
 
 	Node<T1,T2> *node = new Node<T1,T2>(tkey , tval);
 
@@ -103,11 +105,26 @@ void Unordered_map<T1,T2>::insert(pair<T1,T2> temp)
 	if(t==NULL) mapArray[hashKey] = node;
 	else
 	{
-		while(t->getNext() != NULL)t = t->getNext();
-		t->setNext(node);
+		while(t->getNext() != NULL)
+		{
+			if(t->key==tkey)
+			{
+				t->value = tval;
+				flag = 0;
+				break;
+			}
+			t = t->getNext();
+		}
+		
+		if(t->key==tkey)
+		{
+			t->value = tval;
+			flag = 0;
+		}
+		else t->setNext(node);
 	}
 
-	size_++;
+	if(flag)size_++;
 }
 
 
