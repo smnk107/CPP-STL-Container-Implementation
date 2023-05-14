@@ -107,8 +107,6 @@ Vector<T>::Vector(int n)
 	size_ = n;
 	arr = new T[size_];
 	
-	for(int i=0 ; i<size_ ; i++)
-		arr[i] = 0;
 }
 
 //......................................................
