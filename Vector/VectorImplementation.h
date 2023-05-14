@@ -95,7 +95,20 @@ Vector<T>::Vector()
 {
 	capacity_ = 0;
 	size_ = 0;
-	arr = 0;
+	arr = new T[size_];;
+}
+
+//......................................................
+
+template<class T>
+Vector<T>::Vector(int n)
+{
+	capacity_ = n;
+	size_ = n;
+	arr = new T[size_];
+	
+	for(int i=0 ; i<size_ ; i++)
+		arr[i] = 0;
 }
 
 //......................................................
